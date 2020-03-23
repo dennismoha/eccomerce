@@ -1,0 +1,24 @@
+
+
+<%- include('../partials/header'); %>
+
+<%if(currentUser.role != 'admin') {%>
+	logged in as <%=currentUser.firstname %>
+	<a href="/users/logout" class="btn btn-danger"> logo out </a>
+<% } else {%>
+	<a href="/admin_dashboard" class="btn btn-danger"> admin profile </a>
+	<a href="/users/logout" class="btn btn-danger"> logo out </a>
+<% }%>
+
+
+
+    <%- include('../partials/filter/filter'); %>
+ <%- include('../partials/products/products_display'); %>
+
+
+
+
+
+
+
+<%- include('../partials/footer'); %>

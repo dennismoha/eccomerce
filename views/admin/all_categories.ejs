@@ -1,0 +1,42 @@
+<%- include('../partials/admin/navbar'); %>
+<%- include('../partials/admin/header'); %>
+<%- include('../partials/admin/sidenav'); %>
+
+	<div class="jumbotron">
+		<h3 style="text-align: center"> all categories </h3>
+	</div>
+
+	<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">category name</th>
+      <th scope="col">options</th>
+      <th scope="col">options</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<%category.forEach(function(category) { %>
+    <tr>
+      <th scope="row">1</th>
+      <td><a href="/category/single_category/<%=category.id %>"   ><%= category.name %></td>
+      <td>
+        <form action="/category/category_delete/<%=category.id%>?_method=delete" method="post">
+
+          <button class="btn btn-danger">delete</button>
+        </form>
+      </td>
+      <td><a href ="/category/edit_category/<%=category.id%>"  class="btn btn-success">edit</a></td>
+    </tr>
+    	<% }) %>   
+  </tbody>
+</table>
+
+		 
+	<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+       	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	     <script src="/js/bootstrap.bundle.min.js"></script>
+        <%- include('../partials/footer'); %>
+</html>
+
+<script>

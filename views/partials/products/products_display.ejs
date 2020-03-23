@@ -1,0 +1,30 @@
+
+
+<div class="row"> 
+    <% products.forEach(function(product) { %>
+    <div class="col-sm-4 col-lg-4">
+      <div class="card" style="padding: 5px;margin: 10px">
+        <div class="header">
+              <a href="#"><h2><%= product.title %></h2>  <a href="#">
+           
+        </div>
+        <div class="image">
+          <a href="#"> <img src="/product/photo/<%= product.id%>" style="max-width: 100%; max-height: 100%" /></a>
+        </div>
+        <div class="card-inner">
+          
+        <div class="content">
+          <p><%= product.description %></p>
+        </div>
+          </div>
+          <div>
+          <a href="#" class="btn btn-primary">view more</a>
+          <a href="#" class="btn btn-primary">sold <%= product.sold %> </a>
+           <a href="#" class="btn btn-danger">add to cart</a>
+
+        </div>
+      </div>
+    </div>
+       <%}) %>
+</div>
+

@@ -1,0 +1,51 @@
+
+        <a href="/product/category_all" class="btn btn-danger"> SHOP </a>
+
+    
+
+    
+  <form action="/product/list" method="get">
+      <div class="row" style="margin: 40px">
+        
+          <div class="col-lg-4">
+                    <label class="my-1 mr-2" for="category" >Sort</label>
+                    <select class="custom-select my-1 mr-sm-2" name="sortBy">                           
+                      <option  value="sold"  >sold</option>
+                      <option  value="price"  >price</option>
+                      <option  value="title"  >title</option>
+                      <option  value="quantity"  >quantity</option>
+                      <option  value="createdAt"  >latest</option>
+            </select>
+        </div>
+        
+
+
+           <div class="col-lg-4">
+                    <label class="my-1 mr-2" for="category1" >Order</label>
+                    <select class="custom-select my-1 mr-sm-2" name="order">                           
+                       <option  value="asc"  >Lowest</option>
+                      <option  value="desc"  >Highest</option>
+            </select>
+        </div>
+
+            <div class="col-lg-4" style="top:34px;">
+              <button class="btn btn-primary" id="search"> Search</button>
+            </div>
+      </div>
+  </form>  
+</div>
+
+<!-- <script type="text/javascript">
+  const but = document.getElementById('search');
+  but.addEventListener('click',function($event) {
+    $event.preventDefault();
+  })
+</script> -->
+
+
+
+
+    
+
+
+

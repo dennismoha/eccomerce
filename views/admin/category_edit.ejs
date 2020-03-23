@@ -1,0 +1,48 @@
+<%- include('../partials/admin/navbar'); %>
+<%- include('../partials/admin/header'); %>
+<%- include('../partials/admin/sidenav'); %>
+
+
+  <div class="jumbotron">
+    <h3 style="text-align: center"> Edit Category <%=category.name%> </h3>
+  </div>
+
+      <form action="/category/categoryUpdate/<%=category.id%>?_method=put" method="post">
+        <div class="row" style="margin: 10px">
+          <div class="col">
+            <input type="text" class="form-control" name="name" value="<%=category.name%>">
+          </div>    
+        </div>
+
+        <button type="submit" class="btn btn-success"> <h3> Save Changes</h3></button>
+    </form>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+
+
+  
+  
+      </div>
+    </main>
+  </div>
+</div>
+
+
+
+
+
+
+
+ 
+
+
+	<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+       	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	     <script src="/js/bootstrap.bundle.min.js"></script>
+        <%- include('../partials/footer'); %>
+</html>
+

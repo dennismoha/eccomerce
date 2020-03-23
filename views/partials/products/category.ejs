@@ -1,0 +1,24 @@
+<ul>
+	<%category.forEach(function(category){%>
+	 <a href="/product/categoryList">
+		<li class="list-unstyled">
+				<input type="checkbox" id="<%=category.id%>"  name="form-check-input">
+				<label class="form-check-label"><%=category.name %></label>
+		</li>
+	 </a>
+	<%})%>
+</ul>
+
+<!-- <script type="text/javascript">
+	function cheecked() {
+		var chec = document.getElementById('none');
+
+
+		if(chec.checked == true) {
+			window.location.href= "/"
+		}else {
+			alert('no action')
+		}
+	}
+</script>
+ -->

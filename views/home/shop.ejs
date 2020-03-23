@@ -1,0 +1,35 @@
+<%- include('../partials/header'); %>
+
+<%if(currentUser.role != 'admin') {%>
+	logged in as <%=currentUser.firstname %>
+	<a href="/users/logout" class="btn btn-danger"> logo out </a>
+<% } else {%>
+	<a href="/admin_dashboard" class="btn btn-danger"> admin profile </a>
+	<a href="/users/logout" class="btn btn-danger"> logo out </a>
+<% }%>
+
+<div class="jumbotron">
+	<h3 style="text-align: center;">this is the shop page</h3>
+	
+</div>
+
+<div class="row">
+	<div class="col-lg-4" style="border-right: 3px solid blue">
+		<h3> category</h3>
+		<%- include('../partials/products/category'); %>
+	</div>
+
+	<div class="col-lg-8">
+		<%- include('../partials/products/category_filter'); %>
+	</div>
+	
+</div>
+ 
+
+
+
+
+
+
+
+<%- include('../partials/footer'); %>

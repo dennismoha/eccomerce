@@ -1,0 +1,32 @@
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+
+
+
+<div class="row"> 
+    <% products.forEach(function(product) { %>
+    <div class="col-sm-4 col-lg-4">
+      <div class="card">
+        <div class="image">
+          <img src="/product/photo/<%= product.id%>" alt ="none" />
+        </div>
+        <div class="card-inner">
+          <div class="header">
+            <h2><%= product.title %></h2>
+            <h3><%= product.category %></h3>
+        </div>
+        <div class="content">
+          <p><%= product.description %></p>
+        </div>
+        <div>
+          <a href="#" class="btn btn-primary">view more</a>
+           <a href="#" class="btn btn-danger">add to cart</a>
+             
+        </div>
+          </div>
+      </div>
+    </div>
+       <%}) %>
+</div>
+
+
