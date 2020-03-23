@@ -74,7 +74,7 @@ app.use('/users',users)
 app.use('/category',category);
 app.use('/product',products)
 
-app.listen(8080,(err,success)=> {
+app.listen(process.env.PORT || 8080 ,(err,success)=> {
 	if(err) {
 		console.log('error starting the server')
 	}
