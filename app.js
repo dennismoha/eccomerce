@@ -33,7 +33,26 @@ const users = require('./routes/users');
 const category = require('./routes/category');
 const products = require('./routes/products')
 
-mongoose.connect('mongodb://localhost:27017/diana_eccomerce', {useNewUrlParser: true});
+// mongoose.connect('mongodb://localhost:27017/diana_eccomerce', {useNewUrlParser: true});
+
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+  next();
+});
+
+
+
+mongoose.connect("mmongodb+srv://admin:@$$mon254@admin-dzypr.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true})
+	.then(()=> {
+		console.log("successfully connected")
+	})
+	.catch((error)=>{
+		console.log("connection unsuccessful")
+		console.error(error);
+	})
+
 //express session
 app.use(session({
 	secret: "secretstringauth",
