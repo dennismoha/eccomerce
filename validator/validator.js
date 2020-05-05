@@ -1,6 +1,9 @@
+const express = require('express')
+const { check, validationResult } = require('express-validator');
+
 const  userSignupValidator = (req,res,next)=> {
-	req.check('firstname','Name is required').notEmpty()
-	req.check('lasttname','Name is required').notEmpty()
+	req.check('firstname','Firstname is required').notEmpty()
+	req.check('lastname','lastname is required').notEmpty()
 	req.check('email','Email must be between 3 to 32 characters')
 		.matches(/.+\@.+\../)
 		.withMessage('email must contain @')
@@ -12,8 +15,8 @@ const  userSignupValidator = (req,res,next)=> {
 	req.check('phone_number')
 	.notEmpty()
 	.withMessage('phone number cannot be empty')
-	.isNumeric()
-	.withMessage('phone number can only be numeric')
+	// .isNumeric()
+	// .withMessage('phone number can only be numeric')
 	
 	req.check('password')
 		.isLength({min: 6})
@@ -25,9 +28,10 @@ const  userSignupValidator = (req,res,next)=> {
 	const errors = req.validationErrors() //this method grabs all the errors
 	if(errors) { //goes through the errors and shows any error in the errors variable
 		const firstError = errors.map(error => error.msg)[0];
-		return res.status(400).json({
-			error: firstError
-		});
+		req.flash('error',firstError)
+		
+
+		return res.render('home/singup',{errors:req.flash('error')})
 	}
 	next();
 

@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
-const validator = require('express-validator')
+const Validator = require('express-validator')
 const session = require('express-session')
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
@@ -15,12 +15,25 @@ const app = express();
 
 require('./config/passport')(passport);
 
-
-
-
 app.set('view engine','ejs');
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + '/public/js'));
+app.use(Validator())
+
+const pages = require('./routes/pages')
+const users = require('./routes/users');
+const category = require('./routes/category');
+const products = require('./routes/products')
+
+mongoose.connect('mongodb://localhost:27017/diana_eccomerce', {useNewUrlParser: true});
+//express session
+app.use(session({
+	secret: "secretstringauth",
+	resave: true,
+	saveUninitialized: true,
+	cookie: {secure:true}
+	
+}));
 
 //app.use(express.urlencoded({extended:true}));
 //body-parser middleware but in express
@@ -28,52 +41,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-const pages = require('./routes/pages')
-const users = require('./routes/users');
-const category = require('./routes/category');
-const products = require('./routes/products')
-
-// mongoose.connect('mongodb://localhost:27017/diana_eccomerce', {useNewUrlParser: true});
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-  next();
-});
-
-
-
-mongoose.connect("mmongodb+srv://admin:@$$mon254@admin-dzypr.mongodb.net/test?retryWrites=true&w=majority",{useNewUrlParser:true})
-	.then(()=> {
-		console.log("successfully connected")
-	})
-	.catch((error)=>{
-		console.log("connection unsuccessful")
-		console.error(error);
-	})
-
-//express session
-app.use(session({
-	secret: "secretstringauth",
-	resave: true,
-	saveUninitialized: true,
-	
-}));
-
 
 
 //initializing passport
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 app.use(flash())
-//express-messages
-app.use(function (req, res, next) {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
 
 //method override for delete and edit
 app.use(methodOverride('_method'));
@@ -82,11 +56,13 @@ app.use(methodOverride('_method'));
 app.use((req,res,next)=> {
 	res.locals.currentUser = req.user;
 	res.locals.property_got = req.property
-	res.locals.sucess = req.flash('sucess');
-	res.locals.error =  req.flash('error');
+	res.locals.info = req.flash('info');
+	res.locals.errors =  req.flash('errors');	
 	res.locals.error_login =  req.flash('error_login');
 	next();
 });
+
+
 
 app.use('/',pages)
 app.use('/users',users)

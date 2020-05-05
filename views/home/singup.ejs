@@ -17,7 +17,7 @@
             name="firstname"
             class="form-control"
             placeholder="Enter Name"
-            value="<%= typeof name != 'undefined' ? name : '' %>"
+         
           />
         </div>
 
@@ -29,7 +29,7 @@
             name="lastname"
             class="form-control"
             placeholder="Enter Name lastname"
-            value="<%= typeof lastname != 'undefined' ? lastname : '' %>"
+          
           />
         </div>
 
@@ -41,7 +41,7 @@
             name="email"
             class="form-control"
             placeholder="Enter Email"
-            value="<%= typeof email != 'undefined' ? email : '' %>"
+            
           />
         </div>
 
@@ -53,7 +53,7 @@
             name="phone_number"
             class="form-control"
             placeholder="Enter phone number"
-            value="<%= typeof phone_number != 'undefined' ? phone_number : '' %>"
+           
           />
         </div>
 
@@ -65,7 +65,7 @@
             name="password"
             class="form-control"
             placeholder="Create Password"
-            value="<%= typeof password != 'undefined' ? password : '' %>"
+           
           />
         </div>
         <div class="form-group">
@@ -76,7 +76,7 @@
             name="password2"
             class="form-control"
             placeholder="Confirm Password"
-            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+           
           />
         </div>
 
@@ -88,23 +88,12 @@
             name="role"
             class="form-control"
             placeholder="Enter Name role"
-            value="<%= typeof role != 'undefined' ? role : '' %>"
+            
           />
-        </div>
-
-        <!-- <div class="form-group">
+        </div>  
          
-          <input
-            type="hidden"
-        
-            name="_csrf"
-            
-            
-            value=""
-          />
-        </div> -->
-
-        <button type="submit" class="btn btn-primary btn-block">
+          
+   <button type="submit" class="btn btn-primary btn-block">
           Register
         </button>
       </form>
@@ -113,3 +102,4 @@
   </div>
 </div>
 
+<%- include('../partials/footer'); %>

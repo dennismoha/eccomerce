@@ -15,36 +15,26 @@ const singleCategory = (req,res,next,id) => {
 	});
 }
 
-const newCategory = (req,res) => {
-	const {name} = req.body;
-	if(!name || name =="" ) {
-	res.send("category is empty")
-} else {
-	Category.findOne({name:name}).then((category)=> {
-		if(category) {
-			
-			res.redirect('/category/all_category')
-		}else {
-			const caategory = new Category({
-					name : req.body.name
-				})
-			caategory.save().then((category)=> {
-				res.redirect('/category/all_category')
-			}).catch((error)=> {
-				throw error
-			})
 
-		}
-		
-		
 
-		
-	}).catch((error)=> {
-		console.log('error in category creation')
-		throw error
-	})
-} 
+//new category
 
+const newCategory =(req,res) => {
+	req.checkBody('name','title cannot be empty').notEmpty()
+
+	var name = req.body.name;
+	var sep = name.replace('/\s+/g','-').toLowerCase();
+
+	var errors = req.validationErrors();
+				if(errors) {
+					var messages = [];
+					errors.forEach(function(error) {
+							messages.push(error.msg)
+						})	
+						req.flash('error',messages)
+						console.log(messages)
+					res.render('admin/category',{messages:req.flash('error'),title:req.body.title})			
+				}
 }
 
 //displaying all the categories

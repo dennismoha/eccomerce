@@ -13,7 +13,8 @@ const allowIfLoggedin = (req, res, next) => {
 		if(req.isAuthenticated()) {
 				return next();
 		}
-				
+		
+		req.flash('error','your not logged in')	
 		res.redirect('/')
 	}
 

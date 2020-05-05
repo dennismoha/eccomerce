@@ -29,7 +29,14 @@ const home = (req,res) => {
 
 //singup page
 const singup_page = (req,res) => {
-	res.render('home/singup')
+	var firstname = "";
+	var lastname  = "";
+	var email  = ""; 
+	var phone_number = ""; 
+	var password  = ""; 
+	var role = "";
+	var password2 = "";
+	res.render('home/singup', {firstname:firstname,lastname:lastname,email:email,phone_number:phone_number,password:password,password2:password2,role:role})
 }
 //login page
 const login_page = (req,res) => {

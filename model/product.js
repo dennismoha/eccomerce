@@ -19,13 +19,9 @@ const propertySchema = new mongoose.Schema({
             maxlength: 32
         },     
 
-        category: [{
-            
-               type:mongoose.Schema.Types.ObjectId,
-               ref: 'category' 
-
-            
-        }],
+        category: {       
+               type:String,required:true,trim:true            
+        },
         quantity: {
             type: Number
         },   
